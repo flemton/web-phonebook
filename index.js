@@ -20,7 +20,7 @@ contacts.forEach((contact) => {
     <div>
     <p>Name: <br> ${contact.contactName}</p>
     <p>Phone Number: <br> ${contact.phoneNumber}</p>
-    <button>Remove</button>
+    <button class="remove">Delete</button>
     </div>
     <hr>
     `;
@@ -44,4 +44,9 @@ function addContact() {
 
   }
 
-  
+const removebtn = document.querySelectorAll('.remove');
+removebtn.forEach((element, i) => element.addEventListener('click', () => {
+    contacts.splice(i, 1);
+    localStorage.setItem('contacts', JSON.stringify(contacts));
+    window.location.reload();
+  }));
